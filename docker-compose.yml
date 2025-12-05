@@ -1,0 +1,32 @@
+services:
+  names:
+    container_name: exu2-names
+    image: names:v1.0.1
+    ports:
+      - "80:80"
+    networks:
+      - exu2-scaj-net
+    build: 
+      context: ./client
+      args:
+        API_HOST: localhost
+        API_PORT: 8081  
+        API_BASE: /api/nom #Endopint del controller del back (/sgu-api/)
+    depends_on:
+      - nameAll
+    
+  nameAll:
+    container_name: exu2-nameAll
+    image: nameAll:v1.0.1
+    build: 
+      context: ./server
+    ports:
+      - "8081:8080"
+    networks:
+      - exu2-scaj-net
+
+# Aqui se configuran las redes donde se comunican los contenedores
+# docker network create --driver bridge exu2-scaj-net
+networks:
+  exu2-scaj-net:
+    external: true
