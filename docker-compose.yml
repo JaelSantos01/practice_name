@@ -13,11 +13,11 @@ services:
         API_PORT: 8081  
         API_BASE: /api/nom #Endopint del controller del back (/sgu-api/)
     depends_on:
-      - nameAll
+      - nameall
     
-  nameAll:
-    container_name: exu2-nameAll
-    image: nameAll:v1.0.1
+  nameall:
+    container_name: exu2-nameall
+    image: nameall:v1.0.1
     build: 
       context: ./server
     ports:
